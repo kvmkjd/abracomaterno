@@ -3,15 +3,637 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abraço Materno</title>
+    <title>Abraço Materno - Acolhimento para Mães de Primeira Viagem</title>
+    <style>
+        :root {
+            --marrom: #8B5A2B;
+            --bege: #f7e5cd;
+            --bege-escuro: #f7e5cd;
+            --branco: #FFFFFF;
+            --sombra: rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bege);
+            color: var(--marrom);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--branco);
+            box-shadow: 0 2px 10px var(--sombra);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--marrom);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--marrom);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: darken(var(--marrom), 10%);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(245, 245, 220, 0.8), rgba(245, 245, 220, 0.8)), url(https://observatorio3setor.org.br/wp-content/uploads/2017/10/1-Gravidez.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--marrom);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: var(--marrom);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--marrom);
+            color: var(--branco);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #6B3A1B;
+            transform: translateY(-3px);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--branco);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--marrom);
+            margin: 15px auto;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--sombra);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Resources Section */
+        .resources {
+            padding: 80px 0;
+            background-color: var(--bege-escuro);
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .resource-card {
+            background-color: var(--branco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--sombra);
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .resource-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .resource-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .resource-card:hover .resource-image img {
+            transform: scale(1.05);
+        }
+        
+        .resource-content {
+            padding: 20px;
+        }
+        
+        .resource-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--marrom);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--branco);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--bege);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--sombra);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            font-size: 80px;
+            color: rgba(139, 90, 43, 0.1);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            color: var(--marrom);
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 14px;
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--bege);
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .info-item i {
+            margin-right: 15px;
+            color: var(--marrom);
+            font-size: 20px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: var(--branco);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--sombra);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--marrom);
+            color: var(--branco);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--branco);
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin: 0 5px;
+            color: var(--branco);
+            line-height: 40px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--branco);
+            color: var(--marrom);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+            }
+            
+            nav ul li:first-child {
+                margin-left: 0;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-       <div class="content">
-        <h1>Abraço Materno</h1>
-        <p>Bem-vinda ao nosso espaço de acolhimento, amor e cuidado para mães e bebês.</p>
-        <a href="sobre.html" class="btn">Entrar no site</a>
-    </div>
- </div>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0efdea91-7846-4e62-9a00-896db126953b.png" alt="Logo Abraço Materno - Ícone de mãe segurando bebê com coração" />
+                Abraço Materno
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#resources">Recursos</a></li>
+                    <li><a href="#testimonials">Depoimentos</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home" style="height: 95vh;">
+        <div class="container hero-content">
+            <h1>Bem-vinda ao Abraço Materno</h1>
+            <p>Um espaço acolhedor criado especialmente para mães de primeira viagem. Aqui você encontra apoio, informação e uma comunidade que entende cada passo dessa jornada incrível.</p>
+            <a href="#about" class="btn">Conheça nosso projeto</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about" style="height: 95vh;">
+        <div class="container">
+            <h2 class="section-title">Sobre Nós</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>O Abraço Materno nasceu da vontade de oferecer suporte real e acolhimento para mulheres que estão vivenciando a maternidade pela primeira vez. Sabemos que esse momento é repleto de alegrias, mas também de dúvidas, incertezas e desafios.</p>
+                    <p>Nossa missão é criar uma rede de apoio onde você possa encontrar informações confiáveis, compartilhar experiências e se sentir abraçada em cada etapa dessa transformação.</p>
+                    <p>Oferecemos grupos de apoio, materiais educativos, informações sobre saúde materno-infantil e um espaço seguro para tirar dúvidas com profissionais especializados.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhroTueJhGm-0L-3ye9FXx1mjNvCQuhCHv1Q&s" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources" id="resources" style="height: 95vh;">
+        <div class="container">
+            <h2 class="section-title">Recursos para Mães</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-image">
+                        <img src="data:image/jpeg;base64,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" alt="Psicóloga em consultório sorrindo enquanto conversa com mulher grávida em ambiente profissional" />
+                    </div>
+                    <div class="resource-content">
+                        <h3 class="resource-title">Apoio Psicológico</h3>
+                        <p>Atendimento especializado para ajudar a lidar com as emoções da gestação e pós-parto.</p>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/620e9efb-751b-4669-8751-828686fdf2c9.png" alt="Grupo de mulheres grávidas em oficina de cuidados com bebê, praticando como trocar fraldas em bonecos" />
+                    </div>
+                    <div class="resource-content">
+                        <h3 class="resource-title">Oficinas Práticas</h3>
+                        <p>Workshops e cursos sobre cuidados com o bebê, amamentação e desenvolvimento infantil.</p>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/422061b8-f483-4326-a836-da205cd6cd1b.png" alt="Círculo de mães com bebês em ambiente aconchegante, compartilhando experiências e sorrisos" />
+                    </div>
+                    <div class="resource-content">
+                        <h3 class="resource-title">Rede de Apoio</h3>
+                        <p>Grupos de convivência onde você pode compartilhar vivências com outras mães.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials" style="height: 95vh;">
+        <div class="container">
+            <h2 class="section-title">Depoimentos</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Participar do Abraço Materno mudou completamente minha experiência como mãe de primeira viagem. Encontrei não só informações, mas principalmente apoio emocional para lidar com minhas inseguranças.</p>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8c1d3634-b2f0-4187-85f8-0d7240b1d4ae.png" alt="Retrato de Ana Paula, mãe de primeira viagem com cabelos castanhos e sorriso tranquilo" />
+                        </div>
+                        <div class="author-info">
+                            <h4>Ana Paula</h4>
+                            <p>Mãe da Laura, 6 meses</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">As oficinas práticas me deram mais confiança para cuidar do meu bebê. Aprendi não só com os profissionais, mas também trocando experiências com outras mães que estavam vivendo os mesmos desafios.</p>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1f7e765f-775b-4ea6-ab1f-447c97a8a106.png" alt="Retrato de Carla Regina, mãe sorridente com cabelos loiros e expressão carinhosa" />
+                        </div>
+                        <div class="author-info">
+                            <h4>Isabella</h4>
+                            <p>Mãe do Pedro, 4 meses</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Encontrei no Abraço Materno o acolhimento que tanto precisei no pós-parto. Saber que não estava sozinha e que minhas dúvidas eram comuns fez toda a diferença nessa jornada.</p>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bf558168-d487-4074-8f59-866bbba96655.png" alt="Retrato de Mariana Lima, jovem mãe com olhar terno e expressão serena" />
+                        </div>
+                        <div class="author-info">
+                            <h4>Mariana Lima</h4>
+                            <p>Mãe da Sofia, 8 meses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact" style="height: 95vh;">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <h2>caso queira doar</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Venha nos visitar</h3>
+                    <div class="info-item">
+                        <i>📍</i>
+                        <p>Av.Sen Salgado Filho<br>Lagoa Nova- Natal/RN </p>
+                    </div>
+                    <div class="info-item">
+                        <i>📞</i>
+                        <p>(84) 98765-4321<br>Segunda a Sexta, das 9h às 17h</p>
+                    </div>
+                    <div class="info-item">
+                        <i>✉️</i>
+                        <p>contato@abracomaterno.com.br</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Assunto</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#home">Início</a>
+                <a href="#about">Sobre</a>
+                <a href="#resources">Recursos</a>
+                <a href="#testimonials">Depoimentos</a>
+                <a href="#contact">Contato</a>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram">ig</a>
+                <a href="#" aria-label="WhatsApp">wa</a>
+            </div>
+            <p>© 2021 Abraço Materno - Todos os direitos reservados</p>
+        </div>
+    </footer>
 </body>
 </html>
+
